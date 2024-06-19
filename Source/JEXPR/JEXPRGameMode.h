@@ -14,6 +14,3 @@ class AJEXPRGameMode : public AGameModeBase
 public:
 	AJEXPRGameMode();
 };
-
-
-
