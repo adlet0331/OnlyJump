@@ -79,11 +79,11 @@ void AJEXPRCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		
 		// BP로 호스팅
 		//// Jumping
-		//EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AJEXPRCharacter::NJump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AJEXPRCharacter::Jump);
 		//EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		//// Moving
-		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AJEXPRCharacter::Move);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AJEXPRCharacter::Move);
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AJEXPRCharacter::Look);
