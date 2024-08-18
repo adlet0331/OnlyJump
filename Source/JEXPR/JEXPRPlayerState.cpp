@@ -2,8 +2,3 @@
 
 
 #include "JEXPRPlayerState.h"
-
-UAbilitySystemComponent* AJEXPRPlayerState::GetAbilitySystemComponent() const
-{
-    return AbilitySystemComponent;
-}
