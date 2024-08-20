@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "AbilitySystemInterface.h"
 #include "JEXPRCharacter.generated.h"
 
 class USpringArmComponent;
@@ -16,7 +17,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class AJEXPRCharacter : public ACharacter
+class AJEXPRCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -46,11 +47,22 @@ class AJEXPRCharacter : public ACharacter
 
 public:
 	AJEXPRCharacter();
+
+	/** Gameplay Ability System. Ability를 사용하기 위해서 필요함 */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Abilities")
+	UAbilitySystemComponent* AbilitySystemComponent;
+
+	//~ IAbilitySystemInterface 시작
+	/** Return Ability System Component */
+	UFUNCTION(BlueprintCallable, Category = JEXPRPlayerState)
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	//~ IAbilitySystemInterface 끝
 	
 
 protected:
 
 	/** Called for movement input */
+	UFUNCTION(BlueprintCallable, Category = JEXPRCharacter)
 	void Move(const FInputActionValue& Value);
 
 	/** Called for looking input */
