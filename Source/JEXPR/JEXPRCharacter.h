@@ -57,9 +57,24 @@ public:
 	UFUNCTION(BlueprintCallable, Category = JEXPRPlayerState)
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//~ IAbilitySystemInterface 끝
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = JEXPRCharacter)
+	int32 AirStopCount;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = JEXPRCharacter)
+	int32 AirStopMaxCount;
 	
 
 protected:
+
+	UFUNCTION(BlueprintCallable, Category = JEXPRCharacter)
+	void ResetAirStopCount();
+
+	UFUNCTION(BlueprintCallable, Category = JEXPRCharacter)
+	bool DiscountAirStopCount();
+
+	UFUNCTION(BlueprintCallable, Category = JEXPRCharacter, meta = (DisplayName = "CanAirStop"))
+	bool CanAirStop() const;
 
 	/** Called for movement input */
 	UFUNCTION(BlueprintCallable, Category = JEXPRCharacter)

@@ -65,6 +65,30 @@ void AJEXPRCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
+void AJEXPRCharacter::ResetAirStopCount()
+{
+	AirStopCount = AirStopMaxCount;
+}
+
+bool AJEXPRCharacter::DiscountAirStopCount()
+{
+	if (AirStopCount > 0)
+	{
+		AirStopCount -= 1;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+bool AJEXPRCharacter::CanAirStop() const
+{
+	return AirStopCount > 0;
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
